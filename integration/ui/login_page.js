@@ -1,14 +1,4 @@
-const faker = require('faker');
-
-let user;
-
-before(function () {
-    user = {
-        randomName: faker.name.findName(),
-        randomEmail: faker.internet.email(),
-        randomPassword: faker.random.number()
-    }
-});
+import user from '../../fixtures/user'
 
 describe('Login Functionality', function () {
 
