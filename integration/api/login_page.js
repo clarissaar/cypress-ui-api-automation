@@ -22,4 +22,20 @@ describe('Login Functionality', function () {
                 expect(resp.status).to.eq(200)
             })
     });
+
+    it('Testing list of strings which have a high probability of causing issues via API', function (done) {
+        cy.fixture('blns').then((json) => {
+            for (let i = 0; i < json.length; i++) {
+                cy.request('POST', '/cadastrarUsuario', {
+                    nome: json[i],
+                    email: user.randomEmail,
+                    senha: user.randomPassword
+                })
+                    .then((resp) => {
+                        console.log(json[i])
+                        expect(resp.status).to.eq(200)
+                    })
+            }
+        });
+    });
 });
